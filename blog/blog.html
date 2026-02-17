@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful world</title>
+
+    <link rel="stylesheet" href="../screenStyle.css" media="screen">
+    <link rel="stylesheet" href="blogStyle.css" media="screen">
+    <link rel="stylesheet" href="../public/css/printStyle.css" media="print">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="header_logo">
+            <a href="#/">
+                <img src="/logo/logo.svg" alt="">
+                <span class="logo_nadpis blog-logo-nadpis ">THE GREEN CORNER</span>
+            </a>
+        </div>
+        <div class="header_menu">
+            <ul>
+                <li><a href="#/opinions">opinions</a></li>
+                <li><a href="#/articles">articles</a></li>
+                <li><a href="#/addOpinion">feedback</a></li>
+                <li><a>
+                    <div id="auth-section" class="auth-section">
+                        <div id="google-signin-button"></div>
+                    </div>
+                </a></li>
+
+                    <div id="user-section" style="display: none; width: 8rem; height: 2.1rem;">
+                        <button id="signout-btn" style="padding: 8px 16px; width:100%; border-radius: 18px; cursor: pointer; background-color: #1A73E8; color: white; border: none; font-weight: bold; font-size: 0.9rem">Sign Out</button>
+                    </div>
+
+            </ul>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main id="app">
+    <!-- sem router rendruje obsah -->
+</main>
+
+
+
+
+<script id="template-articles" type="x-tmpl-mustache">
+    <section class="continent-template-header">
+            <div class="continent-template-header-content">
+                <h1><i>Opinions</i></h1>
+            </div>
+        </section>
+    <div class="articles-list">
+        {{#articles}}
+            <div class="article-item">
+                <h2><a href="#/article/{{id}}/{{page}}">{{title}}</a></h2>
+                <p><strong>Author:</strong> {{author}}</p>
+            </div>
+        {{/articles}}
+
+        {{^articles}}
+            <p>No articles found.</p>
+        {{/articles}}
+    </div>
+</script>
+
+<script id="template-articles-error" type="x-tmpl-mustache">
+    <h1>Error</h1>
+    <p>Could not load articles: {{errMessage}}</p>
+</script>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="form-container">
+            <p>Help with your opinion</p>
+            <a href="#/addOpinion">Feedback Form</a>
+        </div>
+
+        <div class="menu-list">
+            <ul>
+                <li><a href="#/opinions">opinions</a></li>
+                <li><a href="#/articles">articles</a></li>
+                <li><a href="#/addOpinion">add feedback</a></li>
+            </ul>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://instagram.com/tvoj_profil" target="_blank" aria-label="Instagram" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com/tvoj_profil" target="_blank" aria-label="Facebook" class="social-link">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="mailto:marek.homiak@student.tuke.sk" aria-label="Email" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <p class="copyright">&copy; 2025 Marek Homiak</p>
+</footer>
+
+<script src="blog_js/auth.js"></script>
+<script src="blog_js/articleFormsHandler.js"></script>
+
+<script type="module">
+    import { router } from "./blog_js/router.js";
+
+    window.addEventListener("DOMContentLoaded", () => {
+        router();  // načíta úvodnú trasu
+    });
+
+    window.addEventListener("hashchange", router);
+</script>
+
+<script src="../js/hamburgerScript.js"></script>
+
+</body>
+</html>

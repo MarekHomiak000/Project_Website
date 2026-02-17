@@ -1,0 +1,117 @@
+/* ======================== */
+/*        Print Styles       */
+/* ======================== */
+@media print {
+    /* General Reset */
+    * {
+        color: black !important;
+        background: white !important;
+        box-shadow: none !important;
+        text-decoration: none !important;
+        filter: grayscale(100%) !important; /* Convert images/SVGs to B&W */
+    }
+
+    html, body {
+        font-size: 12pt;
+        line-height: 1.5;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: white !important;
+        color: black !important;
+        font-family: "myTextFont", Arial, sans-serif;
+    }
+
+    /* Hide non-essential elements */
+    header, nav, .hamburger, footer, .search_div, .search_img_icon, .c_dot {
+        display: none !important;
+    }
+
+    /* Main content containers */
+    main, .index_welcome_text_child, .fact_of_day_text_child, .news_text_child {
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0.5cm 1cm !important;
+        float: none !important;
+    }
+
+    /* Convert grids to vertical blocks */
+    .index_welcome, .fact_of_day, .index_news, .index_search, .news_text {
+        display: block !important;
+        grid-template-columns: 1fr !important;
+        grid-template-areas: none !important;
+        background: white !important;
+        border: none !important;
+        margin-bottom: 1cm;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "myHeadingFont", Arial, sans-serif;
+        font-weight: bold;
+        color: black !important;
+        margin: 0.5cm 0 0.25cm 0;
+        page-break-after: avoid;
+    }
+
+    /* Paragraphs & text */
+    p, li, td, caption, th, ul {
+        font-family: "myTextFont", Arial, sans-serif;
+        font-size: 11pt;
+        color: black !important;
+        margin-bottom: 0.5cm;
+        letter-spacing: normal !important;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+
+    /* News text styling */
+    .news_text p {
+        border-left: 3px solid black !important;
+        padding-left: 0.5em !important;
+        margin-bottom: 0.5cm;
+    }
+
+    /* Images */
+    img {
+        max-width: 60% !important;
+        height: auto !important;
+        display: block;
+        margin: 0.5cm auto;
+        page-break-inside: avoid;
+    }
+
+    /* SVGs */
+    svg {
+        width: 80% !important;
+        height: auto !important;
+        display: block;
+        margin: 0.5cm auto;
+    }
+
+    /* Avoid breaking important elements */
+    h1, h2, h3, h4, h5, h6, p, img, svg, table {
+        page-break-inside: avoid;
+    }
+
+    /* Lists */
+    .places {
+        list-style-type: decimal;
+        margin-left: 1.5em;
+        margin-bottom: 0.5cm;
+    }
+
+    /* Subtle divider between sections */
+    .index_welcome, .fact_of_day, .index_news {
+        border-bottom: 1px solid black;
+        padding-bottom: 0.5cm;
+        margin-bottom: 0.5cm;
+    }
+
+    #itemsList{
+        display: none !important;
+    }
+}
